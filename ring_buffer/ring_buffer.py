@@ -24,11 +24,12 @@ class RingBuffer:
             self.current = self.storage.tail
 
     def get(self):
+        
         list_buffer_contents = []
-        current_head = self.storage.head
-        for i in range(0, self.storage.length):
-            list_buffer_contents.append(current_head.value)
-            current_head = current_head.next
+        node = self.storage.head
+        while node is not None:
+            list_buffer_contents.append(node.value)
+            node = node.next
 
         return list_buffer_contents
 
